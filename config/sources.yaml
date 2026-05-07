@@ -9,13 +9,12 @@ x_accounts:
   - GoogleDeepMind          # Google DeepMind
   # 必要に応じて追加してください
 
-# 監視するYouTubeチャンネル (チャンネルID)
-# チャンネルIDはURLの /channel/UC... の部分
+# 監視するYouTubeチャンネル (@ハンドル or チャンネルID UC... どちらも可)
 youtube_channels:
-  - UCbmNph6atAoGfqLoCL_duAg  # Two Minute Papers
-  - UCWX3yGbODI3HLSEBFBbZJBg  # Yannic Kilcher
-  - UCZHmQk67mSJgfCCTn7xBfew  # Machine Learning Street Talk
-  # 必要に応じて追加してください
+  - keitoaiweb    # @keitoaiweb
+  - mikimikiweb   # @mikimikiweb
+  - iketomo-ch    # @iketomo-ch
+  # 追加例: UCbmNph6atAoGfqLoCL_duAg  (チャンネルIDも使用可)
 
 # Nitter インスタンス (複数指定すると自動フォールバック)
 nitter_instances:

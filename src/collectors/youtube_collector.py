@@ -10,7 +10,16 @@ from .x_collector import Post
 
 logger = logging.getLogger(__name__)
 
-YOUTUBE_RSS_URL = "https://www.youtube.com/feeds/videos.xml?channel_id={channel_id}"
+YOUTUBE_RSS_CHANNEL = "https://www.youtube.com/feeds/videos.xml?channel_id={channel_id}"
+YOUTUBE_RSS_HANDLE = "https://www.youtube.com/feeds/videos.xml?forHandle={handle}"
+
+
+def _channel_rss_url(channel: str) -> str:
+    """Accept either a channel ID (UC...) or a @handle / handle."""
+    handle = channel.lstrip("@")
+    if handle.startswith("UC") and len(handle) == 24:
+        return YOUTUBE_RSS_CHANNEL.format(channel_id=handle)
+    return YOUTUBE_RSS_HANDLE.format(handle=f"@{handle}")
 
 
 class YouTubeCollector:
@@ -28,7 +37,7 @@ class YouTubeCollector:
         posts = []
 
         for channel_id in self.channel_ids:
-            url = YOUTUBE_RSS_URL.format(channel_id=channel_id)
+            url = _channel_rss_url(channel_id)
             try:
                 resp = requests.get(url, timeout=self.timeout)
                 if resp.status_code != 200:
