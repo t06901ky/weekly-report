@@ -43,12 +43,6 @@ filter:
     - 機械学習
     - 生成AI
 
-# Slack設定
-slack:
-  # 通知する時刻 (JST) - EventBridge で設定
-  notify_hour_jst: 8  # 毎朝8時
-
-# AWS設定
-aws:
-  s3_bucket: ai-news-bot-state  # 既読ID管理用S3バケット名
-  region: ap-northeast-1
+# スケジュール設定 (GitHub Actions の cron で管理)
+# 毎日 23:00 UTC = 08:00 JST に実行
+# .github/workflows/daily-ai-news.yml を参照
