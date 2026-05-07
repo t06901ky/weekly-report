@@ -1,0 +1,55 @@
+# 監視するXアカウント (ユーザー名のみ、@なし)
+x_accounts:
+  - sama                    # Sam Altman
+  - ylecun                  # Yann LeCun
+  - karpathy                # Andrej Karpathy
+  - demishassabis            # Demis Hassabis
+  - AnthropicAI             # Anthropic
+  - OpenAI                  # OpenAI
+  - GoogleDeepMind          # Google DeepMind
+  # 必要に応じて追加してください
+
+# 監視するYouTubeチャンネル (チャンネルID)
+# チャンネルIDはURLの /channel/UC... の部分
+youtube_channels:
+  - UCbmNph6atAoGfqLoCL_duAg  # Two Minute Papers
+  - UCWX3yGbODI3HLSEBFBbZJBg  # Yannic Kilcher
+  - UCZHmQk67mSJgfCCTn7xBfew  # Machine Learning Street Talk
+  # 必要に応じて追加してください
+
+# Nitter インスタンス (複数指定すると自動フォールバック)
+nitter_instances:
+  - https://nitter.net
+  - https://nitter.privacydev.net
+  - https://nitter.poast.org
+
+# フィルタリング設定
+filter:
+  # AIニュースとして判定するキーワード (日本語・英語)
+  keywords:
+    - AI
+    - artificial intelligence
+    - machine learning
+    - deep learning
+    - LLM
+    - GPT
+    - Claude
+    - Gemini
+    - ChatGPT
+    - neural network
+    - transformer
+    - diffusion
+    - AGI
+    - 人工知能
+    - 機械学習
+    - 生成AI
+
+# Slack設定
+slack:
+  # 通知する時刻 (JST) - EventBridge で設定
+  notify_hour_jst: 8  # 毎朝8時
+
+# AWS設定
+aws:
+  s3_bucket: ai-news-bot-state  # 既読ID管理用S3バケット名
+  region: ap-northeast-1

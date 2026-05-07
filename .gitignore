@@ -1,0 +1,9 @@
+.env
+__pycache__/
+*.pyc
+*.pyo
+.aws-sam/
+dist/
+*.egg-info/
+.venv/
+venv/
