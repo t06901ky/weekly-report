@@ -1,0 +1,30 @@
+name: Weekly ISMS Compliance Report
+
+on:
+  schedule:
+    - cron: '0 23 * * 0'  # 毎週日曜 23:00 UTC = 月曜 08:00 JST
+  workflow_dispatch:       # 手動実行ボタン
+
+jobs:
+  send-report:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: 'pip'
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run ISMS weekly report
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          ISMS_SLACK_WEBHOOK_URL: ${{ secrets.ISMS_SLACK_WEBHOOK_URL }}
+        run: python src/isms_weekly_report.py
