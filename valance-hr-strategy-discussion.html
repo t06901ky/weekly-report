@@ -1,0 +1,800 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VALANCE HR戦略ディスカッション〜AI駆動型の次世代組織構築に向けて〜</title>
+  <style>
+    :root {
+      --primary: #1a1a2e;
+      --accent: #0f3460;
+      --highlight: #e94560;
+      --gold: #f0a500;
+      --light-bg: #f8f9fc;
+      --card-bg: #ffffff;
+      --border: #e2e6ea;
+      --text-main: #1a1a2e;
+      --text-sub: #555e6e;
+      --text-muted: #8a94a6;
+      --tag-blue: #dbeafe;
+      --tag-blue-text: #1d4ed8;
+      --tag-amber: #fef3c7;
+      --tag-amber-text: #92400e;
+      --tag-rose: #ffe4e6;
+      --tag-rose-text: #9f1239;
+      --tag-green: #dcfce7;
+      --tag-green-text: #166534;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', 'Yu Gothic', sans-serif;
+      background: var(--light-bg);
+      color: var(--text-main);
+      line-height: 1.7;
+      min-height: 100vh;
+    }
+
+    /* ========== HEADER ========== */
+    .page-header {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 60%, #16213e 100%);
+      color: #fff;
+      padding: 56px 40px 48px;
+      position: relative;
+      overflow: hidden;
+    }
+    .page-header::before {
+      content: '';
+      position: absolute;
+      top: -80px; right: -80px;
+      width: 320px; height: 320px;
+      border-radius: 50%;
+      background: rgba(233,69,96,0.15);
+    }
+    .page-header::after {
+      content: '';
+      position: absolute;
+      bottom: -60px; left: 30%;
+      width: 200px; height: 200px;
+      border-radius: 50%;
+      background: rgba(240,165,0,0.10);
+    }
+    .header-meta {
+      font-size: 12px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.55);
+      margin-bottom: 12px;
+      position: relative;
+    }
+    .page-header h1 {
+      font-size: clamp(20px, 3vw, 30px);
+      font-weight: 800;
+      line-height: 1.3;
+      position: relative;
+      letter-spacing: -0.01em;
+    }
+    .page-header h1 em {
+      font-style: normal;
+      color: var(--gold);
+    }
+    .header-sub {
+      margin-top: 14px;
+      font-size: 14px;
+      color: rgba(255,255,255,0.65);
+      position: relative;
+      max-width: 680px;
+    }
+
+    /* ========== LAYOUT ========== */
+    .container {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 40px 24px 80px;
+    }
+
+    /* ========== SECTION TITLE ========== */
+    .section-number {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 36px; height: 36px;
+      border-radius: 50%;
+      background: var(--highlight);
+      color: #fff;
+      font-size: 15px;
+      font-weight: 800;
+      margin-right: 12px;
+      flex-shrink: 0;
+    }
+    .section-title {
+      display: flex;
+      align-items: center;
+      font-size: 20px;
+      font-weight: 800;
+      color: var(--primary);
+      margin-bottom: 6px;
+    }
+    .section-subtitle {
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-bottom: 28px;
+      padding-left: 48px;
+    }
+
+    /* ========== CARD ========== */
+    .card {
+      background: var(--card-bg);
+      border-radius: 14px;
+      border: 1px solid var(--border);
+      padding: 28px 32px;
+      margin-bottom: 20px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    }
+    .card-title {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--text-sub);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+      padding-bottom: 10px;
+      border-bottom: 2px solid var(--light-bg);
+    }
+
+    /* ========== TAG ========== */
+    .tag {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 700;
+      padding: 3px 10px;
+      border-radius: 99px;
+      margin-right: 6px;
+      margin-bottom: 4px;
+      letter-spacing: 0.04em;
+    }
+    .tag-blue  { background: var(--tag-blue);  color: var(--tag-blue-text); }
+    .tag-amber { background: var(--tag-amber); color: var(--tag-amber-text); }
+    .tag-rose  { background: var(--tag-rose);  color: var(--tag-rose-text); }
+    .tag-green { background: var(--tag-green); color: var(--tag-green-text); }
+
+    /* ========== PHILOSOPHY BOX ========== */
+    .philosophy-box {
+      background: linear-gradient(135deg, #f0f4ff 0%, #fdf4ff 100%);
+      border-left: 4px solid var(--accent);
+      border-radius: 0 10px 10px 0;
+      padding: 18px 22px;
+      margin-bottom: 16px;
+    }
+    .philosophy-box .label {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--accent);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+    .philosophy-box p {
+      font-size: 14px;
+      color: var(--text-main);
+      line-height: 1.8;
+    }
+
+    /* ========== COMPARISON TABLE ========== */
+    .compare-wrap {
+      overflow-x: auto;
+      margin: 8px 0 4px;
+    }
+    table.compare {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13px;
+      min-width: 620px;
+    }
+    table.compare thead tr {
+      background: var(--primary);
+      color: #fff;
+    }
+    table.compare thead th {
+      padding: 12px 16px;
+      text-align: left;
+      font-weight: 700;
+      font-size: 13px;
+    }
+    table.compare thead th:first-child {
+      border-radius: 10px 0 0 0;
+      width: 22%;
+    }
+    table.compare thead th:last-child {
+      border-radius: 0 10px 0 0;
+    }
+    table.compare tbody tr:nth-child(odd)  { background: #f8f9fc; }
+    table.compare tbody tr:nth-child(even) { background: #ffffff; }
+    table.compare tbody td {
+      padding: 11px 16px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      color: var(--text-main);
+      line-height: 1.65;
+    }
+    table.compare tbody td:first-child {
+      font-weight: 700;
+      color: var(--accent);
+      white-space: nowrap;
+    }
+    .highlight-cell {
+      background: #fff8e1 !important;
+    }
+    .note-text {
+      font-size: 11px;
+      color: var(--text-muted);
+      margin-top: 4px;
+    }
+
+    /* ========== DISCUSSION POINTS ========== */
+    .discussion-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+    .discussion-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      background: linear-gradient(90deg, #fff7ed 0%, #fff 60%);
+      border: 1px solid #fed7aa;
+      border-radius: 10px;
+      padding: 16px 18px;
+    }
+    .discussion-list li .icon {
+      font-size: 20px;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+    .discussion-list li .text {
+      font-size: 14px;
+      color: var(--text-main);
+      line-height: 1.75;
+    }
+    .discussion-list li .text strong {
+      display: block;
+      font-size: 13px;
+      color: #92400e;
+      margin-bottom: 4px;
+    }
+
+    /* ========== AI FORMULA ========== */
+    .formula-box {
+      background: linear-gradient(135deg, #0f3460 0%, #16213e 100%);
+      color: #fff;
+      border-radius: 12px;
+      padding: 28px 32px;
+      margin: 16px 0;
+      text-align: center;
+    }
+    .formula-box .formula-label {
+      font-size: 12px;
+      letter-spacing: 0.1em;
+      color: rgba(255,255,255,0.55);
+      margin-bottom: 12px;
+      text-transform: uppercase;
+    }
+    .formula-box .formula {
+      font-size: clamp(15px, 2.5vw, 22px);
+      font-weight: 800;
+      letter-spacing: -0.01em;
+      line-height: 1.4;
+    }
+    .formula-box .formula .op {
+      color: var(--gold);
+      margin: 0 8px;
+    }
+    .formula-box .formula-items {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-top: 16px;
+    }
+    .formula-item {
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 8px;
+      padding: 10px 18px;
+      font-size: 13px;
+      line-height: 1.4;
+    }
+    .formula-item .rank {
+      font-size: 10px;
+      color: var(--gold);
+      letter-spacing: 0.08em;
+      margin-bottom: 2px;
+    }
+
+    /* ========== ORG TIMELINE ========== */
+    .timeline {
+      position: relative;
+      padding-left: 32px;
+      margin-top: 8px;
+    }
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 10px; top: 0; bottom: 0;
+      width: 2px;
+      background: linear-gradient(to bottom, var(--accent), var(--highlight));
+      border-radius: 2px;
+    }
+    .timeline-item {
+      position: relative;
+      margin-bottom: 28px;
+    }
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: -26px; top: 4px;
+      width: 14px; height: 14px;
+      border-radius: 50%;
+      background: var(--highlight);
+      border: 3px solid #fff;
+      box-shadow: 0 0 0 2px var(--highlight);
+    }
+    .timeline-phase {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--highlight);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 4px;
+    }
+    .timeline-title {
+      font-size: 15px;
+      font-weight: 800;
+      color: var(--primary);
+      margin-bottom: 6px;
+    }
+    .timeline-body {
+      font-size: 13.5px;
+      color: var(--text-sub);
+      line-height: 1.75;
+    }
+
+    /* ========== PROS CONS ========== */
+    .pros-cons {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-top: 12px;
+    }
+    @media (max-width: 560px) {
+      .pros-cons { grid-template-columns: 1fr; }
+    }
+    .pros-card, .cons-card {
+      border-radius: 10px;
+      padding: 16px 18px;
+    }
+    .pros-card {
+      background: var(--tag-green);
+      border: 1px solid #bbf7d0;
+    }
+    .cons-card {
+      background: var(--tag-rose);
+      border: 1px solid #fecdd3;
+    }
+    .pros-card .pc-title { color: var(--tag-green-text); font-weight: 800; font-size: 13px; margin-bottom: 10px; }
+    .cons-card .pc-title { color: var(--tag-rose-text);  font-weight: 800; font-size: 13px; margin-bottom: 10px; }
+    .pc-list { list-style: none; display: flex; flex-direction: column; gap: 6px; }
+    .pc-list li { font-size: 13px; display: flex; align-items: flex-start; gap: 6px; }
+    .pros-card .pc-list li { color: var(--tag-green-text); }
+    .cons-card .pc-list li { color: var(--tag-rose-text); }
+    .pc-list li::before { content: '●'; font-size: 8px; margin-top: 5px; flex-shrink: 0; }
+
+    /* ========== EXEC TABLE ========== */
+    table.exec {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13px;
+    }
+    table.exec thead tr { background: var(--accent); color: #fff; }
+    table.exec thead th { padding: 10px 14px; text-align: left; font-weight: 700; }
+    table.exec thead th:first-child { border-radius: 8px 0 0 0; }
+    table.exec thead th:last-child  { border-radius: 0 8px 0 0; }
+    table.exec tbody tr:nth-child(odd)  { background: #f8f9fc; }
+    table.exec tbody tr:nth-child(even) { background: #fff; }
+    table.exec tbody td { padding: 10px 14px; border-bottom: 1px solid var(--border); vertical-align: top; }
+    table.exec tbody td:first-child { font-weight: 700; color: var(--accent); }
+
+    /* ========== SECTION SEPARATOR ========== */
+    .section-wrap { margin-bottom: 56px; }
+
+    /* ========== FOOTER ========== */
+    .page-footer {
+      background: var(--primary);
+      color: rgba(255,255,255,0.45);
+      text-align: center;
+      padding: 24px;
+      font-size: 12px;
+      letter-spacing: 0.05em;
+    }
+
+    /* ========== RESPONSIVE ========== */
+    @media (max-width: 700px) {
+      .page-header { padding: 36px 20px 32px; }
+      .container { padding: 28px 16px 60px; }
+      .card { padding: 20px 18px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ===== HEADER ===== -->
+<header class="page-header">
+  <div class="header-meta">VALANCE &nbsp;|&nbsp; Confidential Discussion Draft &nbsp;|&nbsp; 2026.05</div>
+  <h1>VALANCE HR戦略ディスカッション<br><em>〜AI駆動型の次世代組織構築に向けて〜</em></h1>
+  <p class="header-sub">麻生さんとの議論叩き台 &nbsp;|&nbsp; 3つのテーマ：SO設計・AI評価・組織成長戦略</p>
+</header>
+
+<!-- ===== MAIN ===== -->
+<main class="container">
+
+  <!-- ============================================================ -->
+  <!-- SECTION 1: SO -->
+  <!-- ============================================================ -->
+  <div class="section-wrap">
+
+    <div class="section-title">
+      <span class="section-number">1</span>
+      SO（ストックオプション）についての考え方の共有とインプット
+    </div>
+    <div class="section-subtitle">シード〜シリーズAにおけるSO設計の全体方針と具体的スキーム</div>
+
+    <!-- 基本思想 -->
+    <div class="card">
+      <div class="card-title">報酬に対する基本思想</div>
+      <div class="philosophy-box">
+        <div class="label">基本方針</div>
+        <p>エージェント費用を削減して従業員に還元し、<strong>「給与の高い会社」</strong>を目指す。<br>
+        賞与よりもベース給与を上げることを基本とし、黒字化以降は利益を圧縮して<br>
+        セールスインセンティブ等でキャッシュ還元していく。</p>
+      </div>
+      <div style="display:flex; gap:10px; flex-wrap:wrap; margin-top:8px;">
+        <span class="tag tag-blue">シリーズAまではSO設計のみ</span>
+        <span class="tag tag-amber">スポーツ選手型・成果連動</span>
+        <span class="tag tag-green">Nstock活用（拡大フェーズ）</span>
+        <span class="tag tag-rose">全社成果連動給と一体整理</span>
+      </div>
+    </div>
+
+    <!-- 法務・税務 -->
+    <div class="card">
+      <div class="card-title">法務・税務の検討状況</div>
+      <ul style="list-style:none; display:flex; flex-direction:column; gap:10px;">
+        <li style="display:flex; gap:10px; font-size:13.5px; align-items:flex-start;">
+          <span style="color:var(--accent); font-size:18px; flex-shrink:0;">⚖</span>
+          <span><strong>弁護士と調整中：</strong>無償（税制適格SO）と有償SOの並行設計。セーフハーバールール活用時の税務上のリスクや条件による価格変動有無の確認。</span>
+        </li>
+        <li style="display:flex; gap:10px; font-size:13.5px; align-items:flex-start;">
+          <span style="color:var(--gold); font-size:18px; flex-shrink:0;">🏦</span>
+          <span><strong>税理士・会計事務所と調整中：</strong>純資産法に基づく株価算定。</span>
+        </li>
+        <li style="display:flex; gap:10px; font-size:13.5px; align-items:flex-start;">
+          <span style="color:var(--highlight); font-size:18px; flex-shrink:0;">📅</span>
+          <span><strong>タイミング：</strong>2026年6月末に1期目締め → 試算表作成 → 価格算定 → <strong>2026年9月ごろ発行予定</strong>。</span>
+        </li>
+      </ul>
+    </div>
+
+    <!-- 比較表 -->
+    <div class="card">
+      <div class="card-title">具体的なSOスキーム比較（金田様相談用資料より）</div>
+      <div class="compare-wrap">
+        <table class="compare">
+          <thead>
+            <tr>
+              <th>項目</th>
+              <th>パートナー企業向け<br>有償SO</th>
+              <th>従業員向け<br>無償SO（税制適格SO）</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>発行タイミング</td>
+              <td>2026年9月ごろ<br><span class="note-text">※6月末1期目締め後に価格算定</span></td>
+              <td>2026年9月ごろ<br><span class="note-text">※同上</span></td>
+            </tr>
+            <tr>
+              <td>対象</td>
+              <td>パートナープラン「松」選択の最大30社</td>
+              <td>2026年7月までに入社のグレード3以上<br><span class="note-text">※現金給与希望メンバーは除外</span></td>
+            </tr>
+            <tr>
+              <td>SOの目的</td>
+              <td>パートナー企業のコミットメント強化</td>
+              <td>リスクテイクへの感謝・業績向上へのコミット強化・リテンション強化</td>
+            </tr>
+            <tr>
+              <td>発行割合<br>（完全希薄化後）</td>
+              <td class="highlight-cell"><strong>1%</strong><br><span class="note-text">※いつ時点の1%かは社内合意前</span></td>
+              <td class="highlight-cell"><strong>1.5〜2%</strong><br><span class="note-text">※同上</span></td>
+            </tr>
+            <tr>
+              <td>ベスティング</td>
+              <td>設定しない想定</td>
+              <td><strong>1-year cliff</strong>、以後1年25%ずつ<br><span class="note-text">※起算日検討中（入社日／付与日／上場後）</span></td>
+            </tr>
+            <tr>
+              <td>2026年8月以降</td>
+              <td>追加発行・付与なし想定</td>
+              <td>シリーズAで追加発行・付与<br><span class="note-text">※入社年度係数あり（早期入社が有利）。評価制度施行後は年1回評価連動付与も検討</span></td>
+            </tr>
+            <tr>
+              <td>その他・特記事項</td>
+              <td>株価を行使条件にし、オプション料を抑える方針を検討</td>
+              <td>セーフハーバールール活用で行使価格を低減。M&A枠でも確定分は失効なし。退職時は原則持ち出し不可（個別契約で例外あり）</td>
+            </tr>
+            <tr>
+              <td style="color:var(--highlight);">▶ 議論点</td>
+              <td style="background:#fff0f0;">行使条件をつけるか？</td>
+              <td style="background:#fff0f0;">ベスティング起算日をいつにするか？</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- 議論ポイント -->
+    <div class="card">
+      <div class="card-title">麻生さんとの議論ポイント</div>
+      <ul class="discussion-list">
+        <li>
+          <div class="icon">💡</div>
+          <div class="text">
+            <strong>論点① 有償SO vs 無償（税制適格）SOの最適な切り分け方</strong>
+            シード〜シリーズAフェーズにおける両者の使い分けと、セーフハーバールール等の税務・法務上の落とし穴。具体的な数値水準やリスクについて教えていただきたい。
+          </div>
+        </li>
+        <li>
+          <div class="icon">🏆</div>
+          <div class="text">
+            <strong>論点② 「スポーツ選手型」メリハリ付与のベストプラクティス</strong>
+            成果連動型のメリハリあるSO付与設計、Nstock等を活用した年1回の付与オペレーション。他社成功・失敗事例があれば。
+          </div>
+        </li>
+        <li>
+          <div class="icon">📋</div>
+          <div class="text">
+            <strong>論点③ 現場の具体的な2点について</strong>
+            「ベスティングの起算日」（入社日・付与日・上場後どれが最適か）と「パートナー向け有償SOへの行使条件設定」の是非について、具体的なアドバイスをお願いしたい。
+          </div>
+        </li>
+      </ul>
+    </div>
+
+  </div><!-- /section-wrap -->
+
+
+  <!-- ============================================================ -->
+  <!-- SECTION 2: AI評価 -->
+  <!-- ============================================================ -->
+  <div class="section-wrap">
+
+    <div class="section-title">
+      <span class="section-number">2</span>
+      評価をAIで全自動化する構想と、国内外の事例について
+    </div>
+    <div class="section-subtitle">人事工数をゼロに近づけ、人的リソースをアトラクト・エンゲージメントへ傾斜</div>
+
+    <!-- 基本思想 -->
+    <div class="card">
+      <div class="card-title">究極の業務効率化：評価・勤怠工数をほぼゼロへ</div>
+      <div class="philosophy-box">
+        <div class="label">方針</div>
+        <p>人事で多大な時間を消費する<strong>「評価」と「勤怠」の工数をほぼゼロ化</strong>し、<br>
+        人事の人的リソースを<strong>アトラクト・エンゲージメント向上</strong>に集中させる。</p>
+      </div>
+
+      <div class="card-title" style="margin-top:20px;">AI自動評価のデータソース</div>
+      <ul style="list-style:none; display:flex; flex-direction:column; gap:8px; font-size:13.5px;">
+        <li style="display:flex; gap:10px; align-items:flex-start;">
+          <span style="color:var(--accent); flex-shrink:0;">🎙</span>
+          <span>ミーティング音声・議事録のデータ化（定性データ）</span>
+        </li>
+        <li style="display:flex; gap:10px; align-items:flex-start;">
+          <span style="color:var(--accent); flex-shrink:0;">🖥</span>
+          <span>PC画面録画による業務可視化（5分単位での作業解析）</span>
+        </li>
+        <li style="display:flex; gap:10px; align-items:flex-start;">
+          <span style="color:var(--accent); flex-shrink:0;">📚</span>
+          <span>Notion・Google Driveなどのストック情報読み込み（定量・定性データ生成）</span>
+        </li>
+      </ul>
+    </div>
+
+    <!-- AI評価式 -->
+    <div class="card">
+      <div class="card-title">AI評価スキーム：評価100点満点中 <span style="color:var(--highlight); font-size:18px; font-weight:800;">30点</span> を「AI活用」に配分</div>
+      <div class="formula-box">
+        <div class="formula-label">AI活用スコア算定式（構想中）</div>
+        <div class="formula">
+          AI活用スコア<span class="op">=</span>① Claude使用量<span class="op">×</span>② アウトプット<span class="op">×</span>③ 収益インパクト
+        </div>
+        <div class="formula-items">
+          <div class="formula-item">
+            <div class="rank">RANK 0〜5</div>
+            ① Claude使用量
+          </div>
+          <div class="formula-item">
+            <div class="rank">RANK 0〜5</div>
+            ② アウトプット
+          </div>
+          <div class="formula-item">
+            <div class="rank">RANK 0〜5</div>
+            ③ 組織に対する<br>収益インパクト
+          </div>
+        </div>
+      </div>
+      <p style="font-size:12px; color:var(--text-muted); margin-top:8px;">※ 全評価100点満点のうち、上記3軸の掛け合わせスコアが30点相当を占める構想。残り70点は通常の業績・行動評価。</p>
+    </div>
+
+    <!-- 議論ポイント -->
+    <div class="card">
+      <div class="card-title">麻生さんとの議論ポイント</div>
+      <ul class="discussion-list">
+        <li>
+          <div class="icon">🤖</div>
+          <div class="text">
+            <strong>論点① AI活用30%ウェイトの運用設計と従業員への納得感醸成</strong>
+            「使用量×アウトプット×収益インパクト」を公正に評価するための指標定義・測定方法と、従業員に納得してもらうための透明性設計。恣意性をどう排除するか。
+          </div>
+        </li>
+        <li>
+          <div class="icon">🌐</div>
+          <div class="text">
+            <strong>論点② 国内外のAI・データ駆動型人事評価の最新事例と失敗パターン</strong>
+            先行事例から学ぶべき設計上の落とし穴、特に「ゲーミフィケーション（指標の裏かき）」への対処法。
+          </div>
+        </li>
+      </ul>
+    </div>
+
+  </div><!-- /section-wrap -->
+
+
+  <!-- ============================================================ -->
+  <!-- SECTION 3: 組織成長 -->
+  <!-- ============================================================ -->
+  <div class="section-wrap">
+
+    <div class="section-title">
+      <span class="section-number">3</span>
+      現場の役員構成から考えたときの、今後の成長ステップにおける懸念
+    </div>
+    <div class="section-subtitle">スタープレイヤー中心から60名規模への急拡大をどう乗り越えるか</div>
+
+    <!-- 現役員 -->
+    <div class="card">
+      <div class="card-title">現在の役員・経営陣（創業メンバー5名 ＋ 正社員6名、業務委託含む計約40名）</div>
+      <table class="exec">
+        <thead>
+          <tr>
+            <th>役職</th>
+            <th>氏名</th>
+            <th>バックグラウンド</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>代表取締役CEO</td>
+            <td>渡邉 俊 氏</td>
+            <td>元freee 専務執行役員 CBO</td>
+          </tr>
+          <tr>
+            <td>取締役COO</td>
+            <td>山口 公大 氏</td>
+            <td>連続起業家</td>
+          </tr>
+          <tr>
+            <td>取締役CSO</td>
+            <td>小村 充広 氏</td>
+            <td>元ジャパンネット銀行 代表取締役社長</td>
+          </tr>
+          <tr>
+            <td>執行役員CTO / CDO</td>
+            <td>—</td>
+            <td>各領域のトップクラス</td>
+          </tr>
+          <tr>
+            <td>営業部部長 / CS部長</td>
+            <td>—</td>
+            <td>各領域のトップクラス</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- カルチャー -->
+    <div class="card">
+      <div class="card-title">組織カルチャー：「大人が甲子園を目指す体育会系」</div>
+      <div class="philosophy-box" style="margin-bottom:16px;">
+        <div class="label">ビジョン</div>
+        <p><strong>「5年で売上100億円」「ユニコーン上場」</strong>を本気で狙うモメンタム。<br>
+        圧倒的な実績を持つスペシャリスト集団によって牽引。</p>
+      </div>
+      <div class="pros-cons">
+        <div class="pros-card">
+          <div class="pc-title">Pros（現在の強み）</div>
+          <ul class="pc-list">
+            <li>ストイック・高い自律性</li>
+            <li>プロフェッショナリズム</li>
+            <li>反骨精神・チャレンジ志向</li>
+            <li>本質思考</li>
+          </ul>
+        </div>
+        <div class="cons-card">
+          <div class="pc-title">Cons（拡大期の弱み・課題）</div>
+          <ul class="pc-list">
+            <li>共感性・包含性</li>
+            <li>多様性の受容</li>
+            <li>成長促進（育成）</li>
+            <li>調和性・規律性</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- タイムライン -->
+    <div class="card">
+      <div class="card-title">今後の成長ロードマップと懸念点</div>
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-phase">現在 〜 1年後</div>
+          <div class="timeline-title">〜25名体制：シリーズA近辺 / 取締役会設置会社へ移行</div>
+          <div class="timeline-body">
+            現在CEOが兼務している各部門を独立してワークさせる状態を目指す。<br>
+            スタープレイヤーへの依存から、部門単位での自走を実現する最初のフェーズ。
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-phase">2年後</div>
+          <div class="timeline-title">〜60名体制：監査役会設置 / 上場準備フェーズ</div>
+          <div class="timeline-body">
+            ガバナンス強化とミドルマネジメントの育成・配置が最重要課題。<br>
+            <span style="color:var(--highlight); font-weight:700;">組織の成長痛リスク：</span>共感性・多様性・調和性の欠如が急拡大の過程で顕在化するリスク大。
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 議論ポイント -->
+    <div class="card">
+      <div class="card-title">麻生さんとの議論ポイント</div>
+      <ul class="discussion-list">
+        <li>
+          <div class="icon">🚀</div>
+          <div class="text">
+            <strong>論点① ハイスピード拡大期における権限委譲と組織化の進め方</strong>
+            5年で売上100億・ユニコーン上場を狙うスピードで、1年後の25名体制・2年後の60名体制にどう移行するか。スタープレイヤー中心組織の「スケールのボトルネック」をどこで・どう解消するか。
+          </div>
+        </li>
+        <li>
+          <div class="icon">⚖</div>
+          <div class="text">
+            <strong>論点② 「体育会系・ストイック」の強みを維持しながら弱みを補完するカルチャー設計</strong>
+            現在のProの文化を損なわずに、不足している共感性・多様性・規律性をどのように組織に実装・補完していくか。採用・オンボーディング・マネジメント設計の観点から。
+          </div>
+        </li>
+      </ul>
+    </div>
+
+  </div><!-- /section-wrap -->
+
+</main>
+
+<footer class="page-footer">
+  VALANCE &nbsp;|&nbsp; HR戦略ディスカッション資料 &nbsp;|&nbsp; Confidential &nbsp;|&nbsp; 2026.05
+</footer>
+
+</body>
+</html>
