@@ -1,0 +1,36 @@
+name: Weekly Claude Insight
+
+on:
+  schedule:
+    - cron: '0 11 * * 5'  # 毎週金曜 11:00 UTC = 20:00 JST
+  workflow_dispatch:       # 手動実行ボタン
+
+jobs:
+  insight:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: write  # insights/*.json をコミット・プッシュするため
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # push のため全履歴を取得
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: 'pip'
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run weekly insight
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          INSIGHT_SLACK_WEBHOOK_URL: ${{ secrets.INSIGHT_SLACK_WEBHOOK_URL }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_REPOSITORY: ${{ github.repository }}
+        run: python src/weekly_insight.py
