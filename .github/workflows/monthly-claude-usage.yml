@@ -1,0 +1,33 @@
+name: Monthly Claude Usage Report
+
+on:
+  schedule:
+    # 毎月1日 09:05 JST (= 00:05 UTC) に前月分を集計・通知
+    - cron: '5 0 1 * *'
+  workflow_dispatch:  # 手動実行ボタン
+
+jobs:
+  report:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: 'pip'
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run Claude usage report
+        env:
+          # Anthropic Admin API Key (コンソール → API Keys → Admin keys で作成)
+          ANTHROPIC_ADMIN_KEY: ${{ secrets.ANTHROPIC_ADMIN_KEY }}
+          # 通知先 Slack Incoming Webhook URL
+          SLACK_WEBHOOK_URL_USAGE: ${{ secrets.SLACK_WEBHOOK_URL_USAGE }}
+        run: python src/claude_usage_report.py
